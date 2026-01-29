@@ -1,0 +1,41 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+import os
+path= os.path.expanduser('~/Desktop/combined/output.csv')
+data=pd.read_csv(path)
+#print(data.head())
+
+max1=data['fy'].max()
+min1=data['fy'].min()
+n=len(data['fy'])
+time=np.arange(0,0.4*n,0.4)
+
+
+fig,ax=plt.subplots(3,2, figsize=(12,12))
+ax[0,0].plot(time, data['fx'], color='red')
+ax[0,0].set_title('Fx vs Time')
+ax[0,0].set_xlabel('Time')
+ax[0,0].set_ylabel('Fx')        
+ax[1,0].plot(time, data['fy'], color='blue')
+ax[1,0].set_title('Fy vs Time')
+ax[1,0].set_xlabel('Time')
+ax[1,0].set_ylabel('Fy')
+ax[2,0].plot(time, data['fz'], color='green')
+ax[2,0].set_title('Fz vs Time')
+ax[2,0].set_xlabel('Time')
+ax[2,0].set_ylabel('Fz')  
+ax[0,1].hist(data['fx'].dropna(), bins=30, color='red', edgecolor='black')
+ax[0,1].set_title('Histogram of Fx')
+ax[0,1].set_xlabel('Fx')   
+ax[0,1].set_ylabel('Frequency')
+ax[1,1].hist(data['fy'].dropna(), bins=30, color='blue', edgecolor='black')
+ax[1,1].set_title('Histogram of Fy')
+ax[1,1].set_xlabel('Fy')   
+ax[1,1].set_ylabel('Frequency')
+ax[2,1].hist(data['fz'].dropna(), bins=30, color='green', edgecolor='black')
+ax[2,1].set_title('Histogram of Fz')
+ax[2,1].set_xlabel('Fz')   
+ax[2,1].set_ylabel('Frequency')
+plt.show()
+

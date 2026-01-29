@@ -11,7 +11,6 @@ min1=data['fy'].min()
 n=len(data['fy'])
 time=np.arange(0,0.4*n,0.4)
 
-
 fig,ax=plt.subplots(3,2, figsize=(12,12))
 ax[0,0].plot(time, data['fx'], color='red')
 ax[0,0].set_title('Fx vs Time')
